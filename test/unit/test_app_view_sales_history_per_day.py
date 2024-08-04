@@ -127,8 +127,5 @@ class TestLambdaHandler(unittest.TestCase):
         body = json.loads(result["body"])
         self.assertEqual(body["message"], "INTERNAL_SERVER_ERROR")
 
-
-
-
 if __name__ == '__main__':
     unittest.main()
