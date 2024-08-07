@@ -20,10 +20,66 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.12'
-      - name: Install dependencies
+
+          
+      - name: Install dependencies for cancel_sales
         run: |
+          cd cancel_sales/
           pip install -r requirements.txt
-          pip install pytest pytest-cov
+
+      - name: Install dependencies for change_status_category_or_product/
+        run: |
+          cd change_status_category_or_product/
+          pip install -r requirements.txt
+
+      - name: Install dependencies for get_category
+        run: |
+          cd get_category/
+          pip install -r requirements.txt
+
+      - name: Install dependencies for get products
+        run: |
+          cd get_products/
+          pip install -r requirements.txt
+
+      - name: Install dependencies for save category
+        run: |
+          cd save_category/
+          pip install -r requirements.txt
+
+      - name: Install dependencies for save sale
+        run: |
+          cd save_sale/
+          pip install -r requirements.txt
+
+      - name: Install dependencies for update category
+        run: |
+          cd update_category/
+          pip install -r requirements.txt
+
+      - name: Install dependencies for update product
+        run: |
+          cd update_product/
+          pip install -r requirements.txt
+
+      - name: Install dependencies for history of sales
+        run: |
+          cd view_sales_history_per_day/
+          pip install -r requirements.txt
+      
+      - name: Install dependencies for get one product
+        run: |
+          cd get_one_product/
+          pip install -r requirements.txt
+      - name: Install dependencies for get top sold products
+        run: |
+          cd top_sold_products/
+          pip install -r requirements.txt
+  
+      - name: Install dependencies 
+        run: |
+          cd test/
+          pip install -r requirements.txt
 
       - name: Run unit tests and generate coverage report
         run: |
