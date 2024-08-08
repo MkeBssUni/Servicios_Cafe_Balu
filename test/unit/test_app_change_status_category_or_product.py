@@ -1,6 +1,6 @@
 import unittest
 import json
-from change_status_category_or_product.app import app
+from change_status_category_or_product import app
 from unittest.mock import patch
 
 
