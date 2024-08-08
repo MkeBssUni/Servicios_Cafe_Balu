@@ -37,6 +37,11 @@ jobs:
           cd get_category/
           pip install -r requirements.txt
 
+      - name: Install dependencies for get one product
+        run: |
+          cd get_one_product/
+          pip install -r requirements.txt
+          
       - name: Install dependencies for get products
         run: |
           cd get_products/
@@ -52,11 +57,6 @@ jobs:
           cd save_sale/
           pip install -r requirements.txt
 
-      - name: Install dependencies for update category
-        run: |
-          cd update_category/
-          pip install -r requirements.txt
-
       - name: Install dependencies for update product
         run: |
           cd update_product/
@@ -65,15 +65,6 @@ jobs:
       - name: Install dependencies for history of sales
         run: |
           cd view_sales_history_per_day/
-          pip install -r requirements.txt
-      
-      - name: Install dependencies for get one product
-        run: |
-          cd get_one_product/
-          pip install -r requirements.txt
-      - name: Install dependencies for get top sold products
-        run: |
-          cd top_sold_products/
           pip install -r requirements.txt
   
       - name: Install dependencies 
