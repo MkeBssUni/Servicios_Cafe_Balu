@@ -1,6 +1,6 @@
 import unittest
 import json
-from get_products.app import app
+from get_products import app
 from unittest.mock import patch, MagicMock
 
 mock_success_all ={
