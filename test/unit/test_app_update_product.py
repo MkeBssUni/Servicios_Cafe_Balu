@@ -1,7 +1,7 @@
 import unittest
 import json
 from unittest.mock import patch, MagicMock
-from update_product.app import app
+from update_product import app
 
 mock_event_admin = {
     "requestContext": {
