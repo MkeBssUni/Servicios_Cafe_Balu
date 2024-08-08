@@ -1,6 +1,6 @@
 import unittest
 import json
-from login.app import app
+from login import app
 
 mock_success = {
     "body": json.dumps({
