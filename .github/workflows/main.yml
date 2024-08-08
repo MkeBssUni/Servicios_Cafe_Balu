@@ -30,7 +30,9 @@ jobs:
 
       - name: Set PYTHONPATH
         run: |
-          echo "PYTHONPATH=$PYTHONPATH:$(pwd)/cancel_sales:$(pwd)/change_status_category_or_product:$(pwd)/get_category:$(pwd)/get_one_product:$(pwd)/get_products:$(pwd)/login:$(pwd)/newPassword:$(pwd)/save_category:$(pwd)/save_sale:$(pwd)/update_product:$(pwd)/view_sales_history_per_day" >> $GITHUB_ENV
+          PYTHONPATH=$(pwd)/cancel_sales:$(pwd)/change_status_category_or_product:$(pwd)/get_category:$(pwd)/get_one_product:$(pwd)/get_products:$(pwd)/login:$(pwd)/newPassword:$(pwd)/save_category:$(pwd)/save_sale:$(pwd)/update_product:$(pwd)/view_sales_history_per_day
+          echo "PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV
+
 
       - name: Run unit tests and generate coverage report
         run: |
