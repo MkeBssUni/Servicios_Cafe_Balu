@@ -1,5 +1,0 @@
-pytest
-pytest-cov
-boto3
-requests
-mysql
