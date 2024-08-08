@@ -6,24 +6,31 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-
+      - uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.12'
+          python-version: 3.12
 
-      - name: Install test dependencies
+      - name: Install dependencies
         run: |
+          pip install -r cancel_sales/requirements.txt
+          pip install -r change_status_category_or_product/requirements.txt
+          pip install -r get_category/requirements.txt
+          pip install -r get_one_product/requirements.txt
+          pip install -r get_products/requirements.txt
+          pip install -r save_category/requirements.txt
+          pip install -r save_sale/requirements.txt
+          pip install -r update_product/requirements.txt
+          pip install -r view_sales_history_per_day/requirements.txt
           pip install -r test/requirements.txt
+
+      - name: Set PYTHONPATH
+        run: |
+          echo "PYTHONPATH=$PYTHONPATH:$(pwd)/cancel_sales:$(pwd)/change_status_category_or_product:$(pwd)/get_category:$(pwd)/get_one_product:$(pwd)/get_products:$(pwd)/login:$(pwd)/newPassword:$(pwd)/save_category:$(pwd)/save_sale:$(pwd)/update_product:$(pwd)/view_sales_history_per_day" >> $GITHUB_ENV
 
       - name: Run unit tests and generate coverage report
         run: |
@@ -34,3 +41,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
