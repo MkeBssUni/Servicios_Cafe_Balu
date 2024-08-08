@@ -4,7 +4,7 @@ from unittest.mock import patch, MagicMock
 from datetime import datetime, timedelta
 from decimal import Decimal
 import pymysql
-from view_sales_history_per_day import app
+from view_sales_history_per_day.app import app
 
 
 class TestLambdaHandler(unittest.TestCase):
