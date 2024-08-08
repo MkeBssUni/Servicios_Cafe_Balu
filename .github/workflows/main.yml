@@ -1,15 +1,17 @@
-name: Test with Sonar 
+name: Test with Sonar
 on:
   push:
     branches:
       - develop
   pull_request:
     types: [opened, synchronize, reopened]
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -22,6 +24,8 @@ jobs:
           pip install -r get_category/requirements.txt
           pip install -r get_one_product/requirements.txt
           pip install -r get_products/requirements.txt
+          pip install -r login/requirements.txt
+          pip install -r newPassword/requirements.txt
           pip install -r save_category/requirements.txt
           pip install -r save_sale/requirements.txt
           pip install -r update_product/requirements.txt
@@ -33,14 +37,12 @@ jobs:
           PYTHONPATH=$(pwd)/cancel_sales:$(pwd)/change_status_category_or_product:$(pwd)/get_category:$(pwd)/get_one_product:$(pwd)/get_products:$(pwd)/login:$(pwd)/newPassword:$(pwd)/save_category:$(pwd)/save_sale:$(pwd)/update_product:$(pwd)/view_sales_history_per_day
           echo "PYTHONPATH=$PYTHONPATH" >> $GITHUB_ENV
 
-
       - name: Run unit tests and generate coverage report
         run: |
-          pytest --cov=. --cov-report=xml
+          pytest test/unit --cov=cancel_sales --cov=change_status_category_or_product --cov=get_category --cov=get_one_product --cov=get_products --cov=login --cov=newPassword --cov=save_category --cov=save_sale --cov=update_product --cov=view_sales_history_per_day --cov-report=xml
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}  # Needed to get PR information, if any
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
