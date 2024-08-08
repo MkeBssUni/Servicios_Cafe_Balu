@@ -1,6 +1,6 @@
 import unittest
 import json
-from get_category.app import app
+from get_category import app
 from unittest.mock import patch, MagicMock
 
 mock_success_all = {
