@@ -1,7 +1,7 @@
 import unittest
 import json
 import pymysql
-from get_one_product.app import app
+from get_one_product import app
 from unittest.mock import patch
 
 mock_product = {
