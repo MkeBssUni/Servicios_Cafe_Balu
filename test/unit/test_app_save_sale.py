@@ -1,7 +1,7 @@
 import unittest
 import json
 from unittest.mock import patch
-from save_sale import app
+from save_sale.app import app
 
 mock_event_valid = {
     "requestContext": {
