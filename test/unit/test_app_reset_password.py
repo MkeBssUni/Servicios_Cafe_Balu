@@ -1,6 +1,6 @@
 import json
 import unittest
-from newPassword import app
+from newPassword.app import app
 from unittest.mock import patch
 from botocore.exceptions import ClientError
 
