@@ -34,8 +34,8 @@ jobs:
 
       - name: Set PYTHONPATH
         run: |
-          echo "PYTHONPATH=/Servicios_Cafe_Balu/cancel_sales:/Servicios_Cafe_Balu/change_status_category_or_product:/Servicios_Cafe_Balu/get_category:/Servicios_Cafe_Balu/get_one_product:/Servicios_Cafe_Balu/get_products:/Servicios_Cafe_Balu/login:/Servicios_Cafe_Balu/newPassword:/Servicios_Cafe_Balu/save_category:/Servicios_Cafe_Balu/save_sale:/Servicios_Cafe_Balu/update_product:/Servicios_Cafe_Balu/view_sales_history_per_day" >> $GITHUB_ENV
-
+          echo "PYTHONPATH=Servicios_Cafe_Balu/cancel_sales:Servicios_Cafe_Balu/change_status_category_or_product:Servicios_Cafe_Balu/get_category:Servicios_Cafe_Balu/get_one_product:Servicios_Cafe_Balu/get_products:Servicios_Cafe_Balu/login:Servicios_Cafe_Balu/newPassword:Servicios_Cafe_Balu/save_category:Servicios_Cafe_Balu/save_sale:Servicios_Cafe_Balu/update_product:Servicios_Cafe_Balu/view_sales_history_per_day" >> $GITHUB_ENV
+      
       - name: Print Current Directory
         run: |
           echo "Current directory:"
