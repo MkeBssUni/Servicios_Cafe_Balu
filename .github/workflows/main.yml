@@ -23,12 +23,13 @@ jobs:
           pip install -r test/requirements.txt
 
       - name: Set PYTHONPATH
-        run: |
-          echo "PYTHONPATH=$(pwd)/Servicios_Cafe_Balu" >> $GITHUB_ENV
+          run: echo "PYTHONPATH=$(pwd)/Servicios_Cafe_Balu" >> $GITHUB_ENV
+
 
       - name: Run tests and generate coverage
         run: |
           pytest test/unit/test_app_cancel_sales.py --cov=cancel_sales --cov-report=xml --cov-report=term
+
           
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
