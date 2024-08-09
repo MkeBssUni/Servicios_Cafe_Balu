@@ -1,0 +1,3 @@
+[run]
+# Excluye archivos __init__.py de la cobertura
+omit = **/__init__.py
