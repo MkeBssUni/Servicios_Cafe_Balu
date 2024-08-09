@@ -1,7 +1,7 @@
 import unittest
 import json
 from unittest.mock import patch, MagicMock
-from cancel_sale import app  # Asumiendo que el módulo se llama cancel_sales
+from cancel_sales import app
 
 class TestCancelSales(unittest.TestCase):
 
