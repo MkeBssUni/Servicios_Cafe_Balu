@@ -35,8 +35,10 @@ jobs:
       - name: Set PYTHONPATH
         run: |
           echo "PYTHONPATH=$(pwd)/cancel_sales:$(pwd)/change_status_category_or_product:$(pwd)/get_category:$(pwd)/get_one_product:$(pwd)/get_products:$(pwd)/login:$(pwd)/newPassword:$(pwd)/save_category:$(pwd)/save_sale:$(pwd)/update_product:$(pwd)/view_sales_history_per_day" >> $GITHUB_ENV
-      - name: Run tests
-        run: pytest test/unit --cov-report=xml
+
+      - name: Print PYTHONPATH
+        run: |
+          echo "PYTHONPATH: $PYTHONPATH"
 
       - name: Run tests and generate coverage for cancel_sales
         run: |
@@ -81,7 +83,7 @@ jobs:
       - name: Run tests and generate coverage for view_sales_history_per_day
         run: |
           pytest test/unit/test_app_view_sales_history_per_day.py --cov=view_sales_history_per_day/app.py --cov-report=xml --cov-report=term
-      
+
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
