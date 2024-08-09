@@ -37,7 +37,14 @@ jobs:
       - name: List directory contents
         run: |
           ls -R /home/runner/work/Servicios_Cafe_Balu
+          
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=/home/runner/work/Servicios_Cafe_Balu/Servicios_Cafe_Balu" >> $GITHUB_ENV
 
+      - name: Print PYTHONPATH
+        run: echo $GITHUB_ENV
+
+        
       - name: Run tests and generate coverage
         working-directory: /home/runner/work/Servicios_Cafe_Balu/Servicios_Cafe_Balu
         run: |
