@@ -33,6 +33,9 @@ jobs:
           pip install -r update_product/requirements.txt
           pip install -r view_sales_history_per_day/requirements.txt
           pip install -r test/requirements.txt
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
         
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=/home/runner/work/Servicios_Cafe_Balu/Servicios_Cafe_Balu" >> $GITHUB_ENV
@@ -41,9 +44,6 @@ jobs:
         working-directory: /home/runner/work/Servicios_Cafe_Balu/Servicios_Cafe_Balu
         run: |
           pytest --cov-config .coveragerc --cov=cancel_sales --cov=change_status_category_or_product --cov=get_category --cov=get_one_product --cov=get_products --cov=login --cov=newPassword --cov=save_category --cov=save_sale --cov=update_product --cov=view_sales_history_per_day --cov-report=xml --cov-report=term
-      
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
       
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
