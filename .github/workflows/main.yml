@@ -20,6 +20,18 @@ jobs:
 
       - name: Install dependencies
         run: |
+          # Instalar dependencias desde los requirements.txt de todas las carpetas relevantes
+          pip install -r cancel_sales/requirements.txt
+          pip install -r change_status_category_or_product/requirements.txt
+          pip install -r get_category/requirements.txt
+          pip install -r get_one_product/requirements.txt
+          pip install -r get_products/requirements.txt
+          pip install -r login/requirements.txt
+          pip install -r newPassword/requirements.txt
+          pip install -r save_category/requirements.txt
+          pip install -r save_sale/requirements.txt
+          pip install -r update_product/requirements.txt
+          pip install -r view_sales_history_per_day/requirements.txt
           pip install -r test/requirements.txt
 
       - name: Run tests and generate coverage
