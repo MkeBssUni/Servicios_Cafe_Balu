@@ -28,10 +28,10 @@ jobs:
 
       - name: Run tests and generate coverage
         run: |
-          pytest test/unit/test_app_cancel_sales.py --cov=cancel_sales.app --cov-report=xml --cov-report=term
+          pytest test/unit/test_app_cancel_sales.py --cov=cancel_sales/app.py --cov-report=xml --cov-report=term
           
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
