@@ -32,15 +32,53 @@ jobs:
           pip install -r view_sales_history_per_day/requirements.txt
           pip install -r test/requirements.txt
 
-      - name: Set PYTHONPATH
+      - name: Run tests
+        run: pytest test/unit --cov-report=xml
+
+      - name: Run tests and generate coverage for cancel_sales
         run: |
-          echo "PYTHONPATH=$(pwd)/cancel_sales:$(pwd)/change_status_category_or_product:$(pwd)/get_category:$(pwd)/get_one_product:$(pwd)/get_products:$(pwd)/login:$(pwd)/newPassword:$(pwd)/save_category:$(pwd)/save_sale:$(pwd)/update_product:$(pwd)/view_sales_history_per_day" >> $GITHUB_ENV
+          pytest test/unit/test_app_cancel_sales.py --cov=cancel_sales/app.py --cov-report=xml --cov-report=term
 
-
-      - name: Run unit tests and generate coverage report
+      - name: Run tests and generate coverage for change_status_category_or_product
         run: |
-          pytest test/unit --cov=cancel_sales --cov=change_status_category_or_product --cov=get_category --cov=get_one_product --cov=get_products --cov=login --cov=newPassword --cov=save_category --cov=save_sale --cov=update_product --cov=view_sales_history_per_day --cov-report=xml
+          pytest test/unit/test_app_change_status_category_or_product.py --cov=change_status_category_or_product/app.py --cov-report=xml --cov-report=term
 
+      - name: Run tests and generate coverage for get_category
+        run: |
+          pytest test/unit/test_app_get_category.py --cov=get_category/app.py --cov-report=xml --cov-report=term
+
+      - name: Run tests and generate coverage for get_one_product
+        run: |
+          pytest test/unit/test_get_one_product.py --cov=get_one_product/app.py --cov-report=xml --cov-report=term
+
+      - name: Run tests and generate coverage for get_products
+        run: |
+          pytest test/unit/test_app_get_products.py --cov=get_products/app.py --cov-report=xml --cov-report=term
+
+      - name: Run tests and generate coverage for login
+        run: |
+          pytest test/unit/test_app_login.py --cov=login/app.py --cov-report=xml --cov-report=term
+
+      - name: Run tests and generate coverage for newPassword
+        run: |
+          pytest test/unit/test_app_reset_password.py --cov=newPassword/app.py --cov-report=xml --cov-report=term
+
+      - name: Run tests and generate coverage for save_category
+        run: |
+          pytest test/unit/test_app_save_category.py --cov=save_category/app.py --cov-report=xml --cov-report=term
+
+      - name: Run tests and generate coverage for save_sale
+        run: |
+          pytest test/unit/test_app_save_sale.py --cov=save_sale/app.py --cov-report=xml --cov-report=term
+
+      - name: Run tests and generate coverage for update_product
+        run: |
+          pytest test/unit/test_app_update_product.py --cov=update_product/app.py --cov-report=xml --cov-report=term
+
+      - name: Run tests and generate coverage for view_sales_history_per_day
+        run: |
+          pytest test/unit/test_app_view_sales_history_per_day.py --cov=view_sales_history_per_day/app.py --cov-report=xml --cov-report=term
+      
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
